@@ -25,7 +25,22 @@
         </tr>
         @foreach ($tweets as $tweet)
         <tr>
-            <td>{{ $tweet->user->name }}</td>
+            <td>
+                @if ($tweet->user->photo)
+                    <div class="flex">
+                        <img src="{{ url("storage/{$tweet->user->photo}") }}" class="rounded-full h-8 w-8" alt="{{ $tweet->user->name }}">
+                        <div style="margin-left: 2px">
+                            {{ $tweet->user->name }}
+                        </div>
+                    </div>
+                @else
+                    <div class="flex">
+                        <img src="{{ url('imgs/no-picture.png') }}"  class="rounded-full h-8 w-8" alt="{{ $tweet->user->name }}">
+                        {{ $tweet->user->name }}
+                    </div>
+                @endif
+
+            </td>
             <td>{{ $tweet->content }}</td>
             <td class="d-flex">
                 <a href="#" style="margin-right: 2px" class="btn btn-primary p-1 btn-sm">Editar</a>
