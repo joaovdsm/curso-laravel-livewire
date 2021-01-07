@@ -1,11 +1,10 @@
 <div>
-    Hello World <br>
+    <form wire:submit.prevent="create" method="post" class="d-flex justify-content-between mt-2">
+        <input type="text" name="message" id="message" wire:model="message" class="form-control">
+        <button type="submit" class="btn btn-primary btn-sm" style="margin-left: 2px;">Enviar</button>
+    </form>
 
-    {{ $message }} <br>
-
-    <input type="text" name="message" id="message" wire:model="message">
-
-    <table border="1">
+    <table class="table table-bordered mt-2">
         <tr>
             <th>Usuário</th>
             <th>Tweet</th>

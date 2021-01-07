@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class ShowTweets extends Component
 {
-    public $message = "este é o valor de teste do twwet";
+    public $message = "Insira um tweet...";
 
     public function render()
     {
@@ -16,5 +16,18 @@ class ShowTweets extends Component
         return view('livewire.show-tweets', [
             'tweets' => $tweets,
         ]);
+    }
+
+    public function create(){
+        if ($this->message !== 'Insira um tweet...' && $this->message !== '') {
+            Tweet::create([
+                'content' => $this->message,
+                'user_id' => 1,
+            ]);
+        } else {
+            dd('Você precisa inserir um tweet válido!');
+        }
+
+        $this->message = '';
     }
 }
